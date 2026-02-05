@@ -7,6 +7,5 @@ import androidx.room.Upsert
 interface BorrarDao {
 
     @Upsert
-
     suspend fun upsert(borrar: BorrarEntity): Long
 }
