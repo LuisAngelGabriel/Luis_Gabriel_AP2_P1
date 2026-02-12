@@ -1,4 +1,5 @@
 package edu.ucne.luis_gabriel_ap2_p1.data.local.dao
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
@@ -14,17 +15,18 @@ interface CervezaDao {
     @Delete
     suspend fun delete(cerveza: CervezaEntity)
 
-        @Query("SELECT * FROM cerveza WHERE IdCerveza = :id")
-        suspend fun getById(id: Int): CervezaEntity?
+    @Query("SELECT * FROM cerveza WHERE IdCerveza = :id")
+    suspend fun getById(id: Int): CervezaEntity?
 
-        @Query("SELECT * FROM cerveza ORDER BY IdCerveza DESC")
-        fun observeAll(): Flow<List<CervezaEntity>>
+    @Query("SELECT * FROM cerveza ORDER BY IdCerveza DESC")
+    fun observeAll(): Flow<List<CervezaEntity>>
 
-        @Query("""
+    @Query("""
         SELECT * FROM cerveza 
-        WHERE (:nombre IS NULL OR marca LIKE '%' || :nombre || '%')
+        WHERE (:filtro IS NULL 
+           OR nombre LIKE '%' || :filtro || '%' 
+           OR marca LIKE '%' || :filtro || '%')
         ORDER BY IdCerveza DESC
     """)
-        fun observeFiltered(nombre: String?): Flow<List<CervezaEntity>>
-
+    fun observeFiltered(filtro: String?): Flow<List<CervezaEntity>>
 }
