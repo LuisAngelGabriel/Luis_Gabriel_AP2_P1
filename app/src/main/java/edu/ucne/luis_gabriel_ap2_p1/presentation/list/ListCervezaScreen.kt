@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -211,5 +212,27 @@ fun CervezaCard(
                 }
             }
         }
+    }
+
+}
+@Preview(showBackground = true)
+@Composable
+fun ListCervezaPreview() {
+    MaterialTheme {
+        ListCervezaBody(
+            state = ListCervezaUiState(
+                cervezas = listOf(
+                    Cerveza(IdCerveza = 1, nombre = "Presidente", marca = "Nacional", puntuacion = 5),
+                    Cerveza(IdCerveza = 2, nombre = "Corona", marca = "Modelo", puntuacion = 4)
+                ),
+                conteo = 2,
+                promedioPuntuacion = 4.5
+            ),
+            onDrawer = {},
+            onCreate = {},
+            onEdit = {},
+            onDelete = {},
+            onFilterChanged = {}
+        )
     }
 }

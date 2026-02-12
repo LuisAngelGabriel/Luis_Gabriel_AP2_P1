@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -132,5 +133,21 @@ private fun EditCervezaBody(
                 Text(it, color = MaterialTheme.colorScheme.error)
             }
         }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun EditCervezaPreview() {
+    MaterialTheme {
+        EditCervezaBody(
+            state = EditCervezaUiState(
+                nombre = "Presidente",
+                marca = "Nacional",
+                puntuacion = "5"
+            ),
+            onEvent = {},
+            onDrawer = {},
+            goBack = {}
+        )
     }
 }
