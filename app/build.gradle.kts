@@ -87,3 +87,6 @@ android {
         debugImplementation(libs.androidx.compose.ui.test.manifest)
     }
 }
+dependencies {
+    implementation(libs.androidx.constraintlayout)
+}
